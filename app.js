@@ -33,11 +33,16 @@ function onUserPick(){
   userPick=this.dataset.name;
  console.log("la tua scelta è :",userPick);
  generateCpuPick();
- console.log("la  scelta del computer è :",cpuPick.name);
- console.log(checkWhoWon());
- var cpuPickImage = "<img src'"+ cpuPick.image +"'/>";
+
+ var cpuPickImage = "<img src='" + cpuPick.image + "'/>";
  var cpuPickText = "<h3>" + cpuPick.name + "</h3>";
+
  document.getElementById("computer-choice") .innerHTML = cpuPickImage + cpuPickText;
+ document.getElementById("result").innerHTML=checkWhoWon();
+
+ document.getElementById("player-score").innerHTML= score.userScore;
+ 
+ document.getElementById("cpu-score").innerHTML= score.cpuScore;
 }
 
 
@@ -56,21 +61,27 @@ function checkWhoWon(){
   else{
     if(userPick=="sasso"){
       if(cpuPick.name=="forbice"){
+        score.userScore++;
       return "hai vinto";
       } else{
+        score.cpuScore++;
         return "hai perso";
       }
 
       }  if(userPick =="carta"){
       if(cpuPick.name =="sasso"){
+        score.userScore++;
         return "hai vinto";
       } else{
+        score.cpuScore++;
         return "hai perso";
       }
       }  if(userPick=="forbice"){
       if(cpuPick.name=="carta"){
+        score.userScore++;
         return "hai vinto";
       } else{
+        score.cpuScore++;
         return "hai perso";
       }                   
     }
